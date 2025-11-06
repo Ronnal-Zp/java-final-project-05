@@ -1,0 +1,4 @@
+package com.aldahir.zamora.product.exception;
+
+public class NotFoundProductException extends Exception{
+}
