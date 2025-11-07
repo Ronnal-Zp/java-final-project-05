@@ -1,6 +1,5 @@
-package com.aldahir.zamora.product.repository;
+package com.aldahir.zamora.product.interfaces;
 
-import com.aldahir.zamora.product.exception.InvalidProductException;
 import com.aldahir.zamora.product.exception.NotFoundProductException;
 import com.aldahir.zamora.product.model.Product;
 

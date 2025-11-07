@@ -1,7 +1,7 @@
 package com.aldahir.zamora.product.repository;
 
-import com.aldahir.zamora.product.exception.InvalidProductException;
 import com.aldahir.zamora.product.exception.NotFoundProductException;
+import com.aldahir.zamora.product.interfaces.ProductRepositoryI;
 import com.aldahir.zamora.product.model.Product;
 
 import java.util.ArrayList;
