@@ -5,8 +5,6 @@ import com.aldahir.zamora.product.exception.NotFoundProductException;
 import com.aldahir.zamora.product.model.Product;
 import com.aldahir.zamora.product.service.ProductService;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +25,24 @@ public class ProductController {
             }
         } catch (NotFoundProductException e) {
             System.out.println("Error al listar productos: " + e.getMessage());
+        }
+    }
+
+    public void printProductById(Long id) {
+        try {
+            Product p = productService.findById(id);
+            printProduct(p);
+        } catch (NotFoundProductException e) {
+            System.out.println("Error: "+e.getMessage());
+        }
+    }
+
+    public void printProductByName(String name) {
+        try {
+            Product p = productService.findByName(name);
+            printProduct(p);
+        } catch (NotFoundProductException e) {
+            System.out.println("Error: "+e.getMessage());
         }
     }
 
@@ -55,6 +71,13 @@ public class ProductController {
         } else {
             System.out.println("No se puedo eliminar el producto");
         }
+    }
+
+    private void printProduct(Product p) {
+        System.out.println("Producto: "+p.getName());
+        System.out.println("Precio: "+p.getPrice());
+        System.out.println("Categoria: "+p.getCategory());
+        System.out.println("Stock: "+p.getStock());
     }
 
 }
