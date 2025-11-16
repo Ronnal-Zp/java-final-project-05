@@ -65,12 +65,19 @@ public class ProductController {
     }
 
     public void delete(Long id) {
-        boolean isDeleted = productService.delete(id);
-        if (isDeleted) {
-            System.out.println("Producto eliminado correctamente");
-        } else {
-            System.out.println("No se puedo eliminar el producto");
+        boolean isDeleted = false;
+        try {
+            isDeleted = productService.delete(id);
+
+            if (isDeleted) {
+                System.out.println("Producto eliminado correctamente");
+            } else {
+                System.out.println("No se puedo eliminar el producto");
+            }
+        } catch (InvalidProductException e) {
+            System.out.println("Error: "+e.getMessage());
         }
+
     }
 
     private void printProduct(Product p) {

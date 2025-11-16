@@ -55,15 +55,20 @@ public class ProductService {
 
     public void save(Product product) throws InvalidProductException {
         validateProduct(product, true);
+        if(this.productRepository.existsById(product.getId())) throw new InvalidProductException("Ya existe producto con id: " + product.getId());
+
         this.productRepository.save(product);
     }
 
     public void update(Product product) throws NotFoundProductException, InvalidProductException {
         validateProduct(product, false);
+        if(!this.productRepository.existsById(product.getId())) throw new InvalidProductException("No existe producto con id: " + product.getId());
+
         this.productRepository.update(product);
     }
 
-    public boolean delete(Long id) {
+    public boolean delete(Long id) throws InvalidProductException {
+        if(!this.productRepository.existsById(id)) throw new InvalidProductException("No existe producto con id: " + id);
         return this.productRepository.delete(id);
     }
 
