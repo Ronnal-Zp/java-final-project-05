@@ -5,6 +5,7 @@ import com.aldahir.zamora.product.exception.NotFoundProductException;
 import com.aldahir.zamora.product.model.Product;
 import com.aldahir.zamora.product.service.ProductService;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,14 +18,18 @@ public class ProductController {
     }
 
     public void printProducts(Optional<String> order) {
+        System.out.println("\n");
         try {
             List<Product> productList = productService.getAll(order);
             for (Product product: productList) {
                 System.out.println("Producto: "+product.getName());
                 System.out.println("Precio: "+product.getPrice());
+                System.out.println("Stock: "+product.getStock());
+                System.out.println();
             }
         } catch (NotFoundProductException e) {
             System.out.println("Error al listar productos: " + e.getMessage());
+            System.out.println("\n");
         }
     }
 

@@ -12,7 +12,7 @@ public class ProductRepository implements ProductRepositoryI {
 
     private List<Product> products;
 
-    public ProductRepository(List<Product> products) {
+    public ProductRepository() {
         this.products = new ArrayList<>();
     }
 
