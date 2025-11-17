@@ -34,21 +34,25 @@ public class ProductController {
     }
 
     public void printProductById(Long id) {
+        System.out.println();
         try {
             Product p = productService.findById(id);
             printProduct(p);
         } catch (NotFoundProductException e) {
             System.out.println("Error: "+e.getMessage());
         }
+        System.out.println();
     }
 
     public void printProductByName(String name) {
+        System.out.println();
         try {
             Product p = productService.findByName(name);
             printProduct(p);
         } catch (NotFoundProductException e) {
             System.out.println("Error: "+e.getMessage());
         }
+        System.out.println();
     }
 
     public Product getProductById(Long id) {

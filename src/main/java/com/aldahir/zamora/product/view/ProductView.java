@@ -34,6 +34,7 @@ public class ProductView {
             System.out.println("5. Buscar producto por ID");
             System.out.println("6. Buscar producto por nombre");
             opcion = scanner.nextInt();
+            scanner.nextLine();
 
 
             switch (opcion) {
@@ -51,6 +52,14 @@ public class ProductView {
 
                 case 4:
                     deleteProduct();
+                    break;
+
+                case 5:
+                    findProductById();
+                    break;
+
+                case 6:
+                    findProductByName();
                     break;
 
                 default:
@@ -123,11 +132,15 @@ public class ProductView {
     }
 
     private void findProductById() {
-
+        System.out.println("Ingrese id del producto: ");
+        Long id = scanner.nextLong();
+        productController.printProductById(id);
     }
 
     private void findProductByName() {
-
+        System.out.println("Ingrese el nombre del prodcuto: ");
+        String name = scanner.nextLine();
+        productController.printProductByName(name);
     }
 
     private void deleteProduct() {

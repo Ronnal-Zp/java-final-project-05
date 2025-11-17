@@ -46,11 +46,11 @@ public class ProductService {
     }
 
     public Product findById(Long id) throws NotFoundProductException {
-        return productRepository.findById(id).orElseThrow(() -> new NotFoundProductException("No existe producto con id "+id));
+        return productRepository.findById(id).orElseThrow(() -> new NotFoundProductException("No existe producto con id: "+id));
     }
 
     public Product findByName(String name) throws NotFoundProductException {
-        return productRepository.findByName(name).orElseThrow(() -> new NotFoundProductException("No existe producto con nombre "+name));
+        return productRepository.findByName(name).orElseThrow(() -> new NotFoundProductException("No existe producto con nombre: "+name));
     }
 
     public void save(Product product) throws InvalidProductException {
