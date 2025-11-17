@@ -81,6 +81,7 @@ public class ProductController {
 
     public void delete(Long id) {
         boolean isDeleted = false;
+        System.out.println();
         try {
             isDeleted = productService.delete(id);
 
@@ -93,6 +94,7 @@ public class ProductController {
             System.out.println("Error: "+e.getMessage());
         }
 
+        System.out.println();
     }
 
     private void printProduct(Product p) {

@@ -49,6 +49,10 @@ public class ProductView {
                     updateProduct();
                     break;
 
+                case 4:
+                    deleteProduct();
+                    break;
+
                 default:
                     System.out.println("Opcion no valida");
                     opcion = 1;
@@ -127,7 +131,9 @@ public class ProductView {
     }
 
     private void deleteProduct() {
-
+        System.out.println("Ingrese id del producto a eliminar");
+        Long id = scanner.nextLong();
+        productController.delete(id);
     }
 
     private ProductCategory questAndGetMenuCateory() {
