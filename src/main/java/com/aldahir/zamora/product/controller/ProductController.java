@@ -51,6 +51,16 @@ public class ProductController {
         }
     }
 
+    public Product getProductById(Long id) {
+        try {
+            Product p = productService.findById(id);
+            return p;
+        } catch (NotFoundProductException e) {
+            System.out.println("Error: "+e.getMessage());
+            return null;
+        }
+    }
+
     public void save(Product product) {
         try {
             productService.save(product);

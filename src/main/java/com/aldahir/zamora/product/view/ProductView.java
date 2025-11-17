@@ -45,6 +45,10 @@ public class ProductView {
                     saveProduct();
                     break;
 
+                case 3:
+                    updateProduct();
+                    break;
+
                 default:
                     System.out.println("Opcion no valida");
                     opcion = 1;
@@ -83,6 +87,37 @@ public class ProductView {
         System.out.println();
     }
 
+    private void updateProduct() {
+        System.out.println("Ingrese id:");
+        Long id = scanner.nextLong();
+        scanner.nextLine();
+
+        Product productActual = productController.getProductById(id);
+        if(productActual == null) {
+            System.out.println("No existe producto con id: " + id);
+            System.out.println();
+            return;
+        }
+
+        System.out.println("Ingrese nombre: (dejar en blanco para omitir)");
+        String name = scanner.nextLine();
+        name = name.trim().isEmpty() ? productActual.getName() : name;
+
+        System.out.println("Ingrese precio: (dejar en blanco para omitir)");
+        String priceStr = scanner.nextLine();
+        double price = priceStr.isEmpty() ? productActual.getPrice() : Double.parseDouble(priceStr);
+
+        System.out.println("Ingrese stock: (dejar en blanco para omitir)");
+        String stockStr = scanner.nextLine();
+        int stock = stockStr.isEmpty() ? productActual.getStock() : Integer.parseInt(stockStr);
+
+        ProductCategory productCategory = questAndGetMenuCateory();
+        productCategory = productCategory==null ? productActual.getCategory() : productCategory;
+
+        productController.update(new Product(id,name,price,stock,productCategory));
+        System.out.println();
+    }
+
     private void findProductById() {
 
     }
@@ -105,7 +140,10 @@ public class ProductView {
             System.out.println("3. LIBROS");
             System.out.println("4. OTROS");
 
-            int categoryNumber = scanner.nextInt(); scanner.nextLine();
+            String categoryStr = scanner.nextLine();
+            if(categoryStr.trim().isEmpty()) return null;
+
+            int categoryNumber = Integer.parseInt(categoryStr);
 
             switch (categoryNumber) {
                 case 1:
